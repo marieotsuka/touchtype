@@ -8,6 +8,7 @@ $(document).ready(function(){
 	var scale;
 	var charCheck;
 	$(document).click(function(){
+		prompt();
 		$("#input").focus();
 	});
 
