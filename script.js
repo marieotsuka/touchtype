@@ -7,9 +7,12 @@ $(document).ready(function(){
 	var timer = 0;
 	var scale;
 	var charCheck;
+	$(document).click(function(){
+		$("#input").focus();
+	});
 
 	$(document).keydown(function(e) {
-		$("#input").focus();
+		
 
 		var key = String.fromCharCode(e.keyCode);
 		console.log(e.keyCode);
