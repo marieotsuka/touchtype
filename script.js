@@ -1,47 +1,72 @@
 
 $(document).ready(function(){
-	var pressed=false;
+
 	var timer = 0;
 	var blur;
+	var digit = "";
+	var pressed=false;
+	var shift = false;
 
 	$(document).keydown(function(e) {
-		
-
-		var key = String.fromCharCode(e.keyCode);
-		console.log(e.keyCode);
-		console.log(key);
-
-		if (e.keyCode ===32){
-			$('#cursor').before('<div class="char">&nbsp;</div>');
+		if(!pressed){
+			checkKey(e.keyCode);
 		}
-		else if (e.keyCode ===8){
-			$('#cursor').prev().addClass('strike');
-			$('#cursor').insertBefore($('#cursor').prev());				
+	}).keypress(function(e){
+		if(!pressed){
+			digit = String.fromCharCode(e.keyCode);		
+			typeKey(digit);
+			console.log('keypress',digit);
 		}
-		else if (e.keyCode ===39){
-			$('#cursor').insertAfter($('#cursor').next());
-		}
-		else if (e.keyCode ===37){
-			$('#cursor').insertBefore($('#cursor').prev());
-		}
-		else if (!pressed){ 
-			console.log('pressed');
-			pressed = true;
-			$('#cursor').before('<div class="char" id="pressed">'+key+'</div>');
-			blur = setInterval(charBlur, 50);
-		}else if (!pressed){
-			displayError();
-		}
-	}).keyup(function(e) { 
-		clearInterval(blur);
-		timer = 0;
-		console.log('stop');
-		if(pressed = true){ 
+	}).keyup(function(e) {
+		if(!shift && pressed){
+			clearInterval(blur);
+			timer = 0; 
 			$('.char').removeAttr('id');
 			console.log('stop');
 			pressed = false;
+		}else{
+			shift = false;
 		}
 	});
+
+
+	function checkKey(data){
+		switch (data) {
+		  case 8: //delete
+		  {
+	  		$('#cursor').prev().addClass('strike');
+	  		$('#cursor').insertBefore($('#cursor').prev());	
+	  		break;
+		  }
+		  case 16: //shift
+		  {
+	    	shift = true;
+	    	console.log('shift');
+		    break;
+		  };
+		  case 32: //space bar
+		  {
+	  		$('#cursor').before('<div class="char">&nbsp;</div>');
+	  		break;
+		  };
+		  case 37://left arrow
+		  {
+	    	$('#cursor').insertBefore($('#cursor').prev());
+	      	break;
+		  };
+		  case 39://right arrow
+		  {
+	    	$('#cursor').insertAfter($('#cursor').next());
+	      	break;
+		  };
+		};
+	}
+
+	function typeKey(char){
+		pressed = true;
+		$('#cursor').before('<div class="char" id="pressed">'+char+'</div>');
+		blur = setInterval(charBlur, 50);
+	}
 
 	function charBlur(){
 		timer++;
@@ -51,7 +76,6 @@ $(document).ready(function(){
 		}else{
 			param = 0;
 		}
-		console.log(param);
 		$('#pressed').css('filter','blur(' + param +'px)');
 	}
 
