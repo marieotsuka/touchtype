@@ -9,6 +9,7 @@ $(document).ready(function(){
 	var charCheck;
 
 	$(document).keydown(function(e) {
+		$("#input").focus();
 
 		var key = String.fromCharCode(e.keyCode);
 		console.log(e.keyCode);
