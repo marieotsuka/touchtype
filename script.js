@@ -1,16 +1,8 @@
 
 $(document).ready(function(){
 	var pressed=false;
-	var shift = "";
-	var allowed = true;
-	var animate = true;
 	var timer = 0;
-	var scale;
-	var charCheck;
-	// $(document).click(function(){
-	// 	prompt();
-	// 	$("#input").focus();
-	// });
+	var blur;
 
 	$(document).keydown(function(e) {
 		
@@ -32,16 +24,16 @@ $(document).ready(function(){
 		else if (e.keyCode ===37){
 			$('#cursor').insertBefore($('#cursor').prev());
 		}
-		else if (!pressed){ //play char!
+		else if (!pressed){ 
 			console.log('pressed');
 			pressed = true;
 			$('#cursor').before('<div class="char" id="pressed">'+key+'</div>');
-			scale = setInterval(charBlur, 50);
+			blur = setInterval(charBlur, 50);
 		}else if (!pressed){
 			displayError();
 		}
 	}).keyup(function(e) { 
-		clearInterval(scale);
+		clearInterval(blur);
 		timer = 0;
 		console.log('stop');
 		if(pressed = true){ 
