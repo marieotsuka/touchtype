@@ -1,0 +1,44 @@
+body{
+	font-size: 16px;
+}
+
+*{
+	box-sizing: border-box;
+}
+
+#input{
+	font-family: 'Helvetica', sans-serif;
+	font-size: 8rem;
+	color: black;
+	font-weight: bold;
+	overflow: auto;
+	padding: 1rem;
+	float: left;
+}
+
+.char{
+	float: left;
+	filter: blur(20px);
+}
+
+.strike{
+	text-decoration: line-through;
+}
+
+#cursor{
+	float: left;
+	height: 8rem;
+	width: 0px;
+	border-right: 5px solid #000;
+	animation: blink 1s linear alternate infinite;
+}
+
+
+@keyframes blink {
+  from{
+  	opacity: 0;
+  }
+  to{
+  	opacity: 1;
+  };
+}
