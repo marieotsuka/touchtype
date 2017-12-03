@@ -7,10 +7,10 @@ $(document).ready(function(){
 	var timer = 0;
 	var scale;
 	var charCheck;
-	$(document).click(function(){
-		prompt();
-		$("#input").focus();
-	});
+	// $(document).click(function(){
+	// 	prompt();
+	// 	$("#input").focus();
+	// });
 
 	$(document).keydown(function(e) {
 		
