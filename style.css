@@ -7,7 +7,7 @@ body{
 }
 
 #input{
-	font-family: 'Times New Roman', serif;
+	font-family: 'Helvetica', sans-serif;
 	font-size: 8rem;
 	color: black;
 	font-weight: bold;
@@ -23,6 +23,10 @@ body{
 
 .strike{
 	text-decoration: line-through;
+}
+
+.linebreak{
+	clear: left;
 }
 
 #cursor{

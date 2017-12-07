@@ -38,6 +38,11 @@ $(document).ready(function(){
 	  		$('#cursor').insertBefore($('#cursor').prev());	
 	  		break;
 		  }
+	  	  case 13: //enter
+	  	  {
+    		$('#cursor').before('<div class="linebreak"></div>');	
+    		break;
+	  	  }
 		  case 16: //shift
 		  {
 	    	shift = true;
